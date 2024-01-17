@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+    <title>Chat with AI</title>
+</head>
+<body>
+    <div id="chat-container">
+        <div id="messages">
+            <div class="message user-message">
+                <div class="user-avatar"></div>
+                <p>用户的消息</p>
+            </div>
+            <div class="message ai-message">
+                <div class="ai-avatar"></div>
+                <p>AI的消息</p>
+            </div>
+        </div>
+        <div id="input-container">
+            <input type="text" id="messageInput" placeholder="Type a message..." />
+            <button onclick="sendMessage()">Send</button>
+        </div>
+    </div>
+    <!-- 设置按钮 -->
+    <button class="settings-button" onclick="showSettingsModal()">Settings</button>
+
+    <!-- 设置页面 -->
+    <div id="settingsModal" class="settings-modal">
+        <div class="settings-content">
+            <h3>Settings</h3>
+            <label for="modelInput">Model:</label>
+            <input type="text" id="modelInput" value="glm-4" required>
+            <label for="temperatureInput">Temperature:</label>
+            <input type="number" id="temperatureInput" step="0.01" min="0.01" max="1.0" placeholder="0.95">
+            <label for="topPInput">Top P:</label>
+            <input type="number" id="topPInput" step="0.01" min="0.01" max="1.0" placeholder="0.7">
+            <label for="maxTokensInput">Max Tokens:</label>
+            <input type="number" id="maxTokensInput" min="1" placeholder="Enter max tokens">
+            <!-- 新增的输入字段 -->
+            <label for="systemMessageInput">System Message:</label>
+            <input type="text" id="systemMessageInput" placeholder="Enter system message">
+            <!-- 新增结束 -->
+            <button onclick="submitSettings()">Apply</button>
+            <button onclick="closeSettings()">Close</button>
+        </div>
+    </div>
+
+</body>
+</html>
